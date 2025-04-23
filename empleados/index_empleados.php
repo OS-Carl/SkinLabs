@@ -21,26 +21,52 @@ if (!isset($_SESSION['empleado'])) {
     <meta charset="UTF-8">
     <title>Panel del Personal - SkinLabs</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background: linear-gradient(to right, #f8f9fa, #e3f2fd);
+        }
+        .card-header {
+            background-color: #0d6efd;
+            color: white;
+        }
+        .card-footer {
+            background-color: #f8f9fa;
+        }
+        .list-group-item {
+            font-size: 1.1rem;
+        }
+        .alert-success {
+            background-color: #d4edda;
+            border-color: #c3e6cb;
+            color: #155724;
+        }
+        .btn-close {
+            color: #155724;
+        }
+        .btn-danger {
+            background-color: #dc3545;
+            border-color: #dc3545;
+        }
+    </style>
 </head>
-<body class="bg-light">
+<body>
 
 <div class="container py-5">
-    <div class="card shadow">
-        <div class="card-header bg-primary text-white d-flex justify-content-between align-items-center">
+    <div class="card shadow-lg">
+        <div class="card-header d-flex justify-content-between align-items-center">
             <h2 class="mb-0">Panel del Personal - SkinLabs</h2>
             <span>👤 <?php echo $_SESSION['empleado']; ?></span>
         </div>
         <div class="card-body">
-
             <!-- ✅ Mostrar mensaje de éxito -->
             <?php if (isset($_GET['msg'])): ?>
-    <div class="alert alert-success alert-dismissible fade show" role="alert">
-        <?php echo htmlspecialchars($_GET['msg']); ?>
-        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Cerrar"></button>
-    </div>
-<?php endif; ?>
+                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                    <?php echo htmlspecialchars($_GET['msg']); ?>
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Cerrar"></button>
+                </div>
+            <?php endif; ?>
 
-            <p class="lead">Selecciona una opción:</p>
+            <p class="lead mb-4">Selecciona una opción:</p>
             <div class="list-group">
                 <a href="nuevo.php" class="list-group-item list-group-item-action">➕ Agregar nuevo paciente</a>
                 <a href="buscar.php" class="list-group-item list-group-item-action">🔎 Buscar o modificar paciente</a>
@@ -50,8 +76,6 @@ if (!isset($_SESSION['empleado'])) {
                 <a href="ver_agenda.php" class="list-group-item list-group-item-action">📅 Ver agenda</a>
                 <a href="facturacion.php" class="list-group-item list-group-item-action">💸 Cargar Factura</a>
                 <a href="ver_facturas.php" class="list-group-item list-group-item-action">📊 Ver Facturación</a>
-
-
             </div>
         </div>
         <div class="card-footer text-end">
@@ -60,6 +84,7 @@ if (!isset($_SESSION['empleado'])) {
     </div>
 </div>
 
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 <script>
     // Si el usuario intenta volver con la flecha del navegador
     // y la sesión ya no existe, lo redirigimos al login.
