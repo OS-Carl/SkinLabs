@@ -48,6 +48,10 @@ if (!isset($_SESSION['empleado'])) {
                 <a href="agregar_tratamiento.php" class="list-group-item list-group-item-action">💆‍♂️ Agregar tratamiento o anotaciones</a>
                 <a href="historia_clinica.php" class="list-group-item list-group-item-action">📚 Ver historial de un paciente</a>
                 <a href="ver_agenda.php" class="list-group-item list-group-item-action">📅 Ver agenda</a>
+                <a href="facturacion.php" class="list-group-item list-group-item-action">💸 Cargar Factura</a>
+                <a href="ver_facturas.php" class="list-group-item list-group-item-action">📊 Ver Facturación</a>
+
+
             </div>
         </div>
         <div class="card-footer text-end">
