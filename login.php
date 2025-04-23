@@ -50,12 +50,50 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     <title>Login Empleado - SkinLabs</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <meta http-equiv="Cache-Control" content="no-store" />
+    <style>
+        body {
+            background: #f0f4f8;
+            font-family: 'Arial', sans-serif;
+        }
+        .login-container {
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .card {
+            border-radius: 15px;
+        }
+        .card-header {
+            background-color: #0056b3;
+            color: white;
+            border-radius: 15px 15px 0 0;
+        }
+        .card-body {
+            padding: 2rem;
+        }
+        .form-control {
+            border-radius: 0.5rem;
+            height: 45px;
+        }
+        .btn-primary {
+            border-radius: 0.5rem;
+            font-size: 1.1rem;
+            padding: 12px;
+        }
+        .alert {
+            border-radius: 0.5rem;
+        }
+        .btn-primary:hover {
+            background-color: #004085;
+        }
+    </style>
 </head>
-<body class="bg-light">
-<div class="container py-5">
-    <div class="col-md-6 offset-md-3">
+<body>
+<div class="login-container">
+    <div class="col-md-4">
         <div class="card shadow">
-            <div class="card-header bg-primary text-white text-center">
+            <div class="card-header text-center">
                 <h4 class="mb-0">Ingreso del Personal</h4>
             </div>
             <div class="card-body">
@@ -96,4 +134,5 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
 </body>
 </html>
+
 
