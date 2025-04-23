@@ -67,6 +67,10 @@ CREATE TABLE empleados (
 );
 INSERT INTO empleados (usuario, clave)
 VALUES ('admin', SHA2('1234', 256));
+SELECT * FROM empleados WHERE usuario = '$usuario' AND clave = SHA2('$clave', 256);
+SELECT * FROM empleados WHERE usuario = 'admin';
+
+
 
 INSERT INTO citas (nombre, telefono, servicio, fecha, hora) VALUES
 ('Carla Ramírez', '1144556677', 'Limpieza facial', '2025-12-01', '10:00'),
@@ -74,6 +78,7 @@ INSERT INTO citas (nombre, telefono, servicio, fecha, hora) VALUES
 ('Sofía Álvarez', '1133445566', 'Masajes relajantes', '2025-12-05', '09:00'),
 ('Mariano Pérez', '1122334455', 'Manicura completa', '2025-12-10', '11:15'),
 ('Natalia Suárez', '1177665544', 'Consulta dermatológica', '2025-12-15', '13:00');
+
 
 -- 1. Añadir restricción para evitar que una persona agende más de una cita en el mismo día
 ALTER TABLE citas ADD CONSTRAINT unique_persona_dia UNIQUE (nombre, fecha);
@@ -93,5 +98,15 @@ BEGIN
     END IF;
 END; //
 DELIMITER ;
-
 ALTER TABLE citas ADD dni VARCHAR(15);
+
+CREATE TABLE facturas (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    nombre_cliente VARCHAR(100),
+    dni VARCHAR(20),
+    fecha DATE,
+    monto DECIMAL(10,2),
+    metodo_pago VARCHAR(50)
+);
+
+ALTER TABLE facturas CHANGE nombre_cliente nombre VARCHAR(100);
