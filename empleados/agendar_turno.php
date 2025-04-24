@@ -8,7 +8,8 @@ if (!isset($_SESSION['empleado'])) {
     exit;
 }
 
-$servicio = isset($_GET['servicio']) ? $_GET['servicio'] : '';
+// Capturar el servicio desde POST o GET
+$servicio = isset($_POST['servicio']) ? $_POST['servicio'] : (isset($_GET['servicio']) ? $_GET['servicio'] : '');
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $nombre = $_POST['nombre'];
@@ -70,6 +71,16 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         <div class="card-body">
             <?php if (isset($mensaje)) echo $mensaje; ?>
             <form method="POST">
+                <div class="mb-3">
+                    <label class="form-label">Servicio</label>
+                    <select name="servicio" class="form-select" required>
+                        <option value="">-- Seleccioná un tratamiento --</option>
+                        <option value="Limpieza Facial" <?= ($servicio == 'Limpieza Facial') ? 'selected' : '' ?>>Limpieza Facial</option>
+                        <option value="Tratamiento Antiacné" <?= ($servicio == 'Tratamiento Antiacné') ? 'selected' : '' ?>>Tratamiento Antiacné</option>
+                        <option value="Masaje Relajante" <?= ($servicio == 'Masaje Relajante') ? 'selected' : '' ?>>Masaje Relajante</option>
+                    </select>
+                </div>
+
                 <div class="mb-3">
                     <label class="form-label">Nombre del paciente</label>
                     <input type="text" name="nombre" class="form-control" required>
