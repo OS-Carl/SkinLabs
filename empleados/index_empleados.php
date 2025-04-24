@@ -73,7 +73,9 @@ if (!isset($_SESSION['empleado'])) {
                 <a href="ver_historial.php" class="list-group-item list-group-item-action">📄 Ver historial completo</a>
                 <a href="agregar_tratamiento.php" class="list-group-item list-group-item-action">💆‍♂️ Agregar tratamiento o anotaciones</a>
                 <a href="historia_clinica.php" class="list-group-item list-group-item-action">📚 Ver historial de un paciente</a>
-                <a href="ver_agenda.php" class="list-group-item list-group-item-action">📅 Ver agenda</a>
+                <a href="ver_agenda.php" class="list-group-item list-group-item-action">📅 Ver agenda de turnos</a>
+                <a href="agendar_turno.php" class="list-group-item list-group-item-action">📅 Agendar un nuevo turno</a> <!-- Agregar turno -->
+                <a href="eliminar_turno.php" class="list-group-item list-group-item-action">❌ Eliminar un turno</a> <!-- Eliminar turno -->
                 <a href="facturacion.php" class="list-group-item list-group-item-action">💸 Cargar Factura</a>
                 <a href="ver_facturas.php" class="list-group-item list-group-item-action">📊 Ver Facturación</a>
             </div>
