@@ -1,0 +1,249 @@
+:root {
+    --beige-suave: #dfceaf;
+    --rosa-palido: #fbeadb;
+    --marron-oscuro: #493723;
+    --blanco-calido: #fffefd;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    color: var(--marron-oscuro);
+    background-color: var(--blanco-calido);
+}
+
+h1, h2, h3, h4, .brand-name {
+    font-family: 'Playfair Display', serif;
+    color: var(--marron-oscuro);
+}
+
+.navbar {
+    background-color: transparent !important;
+    padding: 20px 0;
+}
+
+.navbar-brand {
+    font-family: 'Playfair Display', serif;
+    font-size: 2rem;
+    color: var(--marron-oscuro) !important;
+}
+
+.navbar-brand small {
+    display: block;
+    font-size: 1rem;
+    line-height: 1;
+}
+
+.navbar .nav-link {
+    position: relative;
+    color: var(--marron-oscuro) !important;
+    margin: 0 10px;
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+.navbar .nav-link::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: 0;
+    left: 50%;
+    background-color: var(--beige-suave);
+    transition: width 0.3s ease, left 0.3s ease;
+}
+
+.navbar .nav-link:hover {
+    color: var(--beige-suave) !important;
+}
+
+.navbar .nav-link:hover::after {
+    width: 100%;
+    left: 0;
+}
+
+.hero-section {
+    background-color: var(--rosa-palido);
+    padding: 50px 0;
+    position: relative;
+    overflow: hidden;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+}
+
+.hero-image {
+    position: relative;
+    z-index: 1;
+}
+
+.hero-title {
+    font-size: 3.5rem;
+    font-weight: 700;
+    margin-bottom: 20px;
+    line-height: 1.2;
+}
+
+.hero-text {
+    font-size: 1.2rem;
+    margin-bottom: 30px;
+}
+
+.btn-primary {
+    background-color: var(--beige-suave);
+    border: none;
+    color: var(--marron-oscuro);
+    padding: 12px 30px;
+    font-weight: 500;
+    border-radius: 30px;
+}
+
+.btn-primary:hover {
+    background-color: var(--marron-oscuro);
+    color: var(--blanco-calido);
+}
+
+.services-section {
+    padding: 80px 0;
+    background-color: var(--blanco-calido);
+}
+
+.section-title {
+    font-size: 2.5rem;
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.service-card {
+    text-align: center;
+    padding: 20px;
+    border-radius: 10px;
+    transition: all 0.3s ease;
+    height: 100%;
+    border: 1px solid var(--beige-suave);
+    background-color: var(--blanco-calido);
+}
+
+.service-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 20px rgba(73, 55, 35, 0.1);
+}
+
+.service-icon {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    margin: 0 auto 20px;
+    overflow: hidden;
+}
+
+.service-icon img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.service-title {
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+}
+
+.service-description {
+    font-size: 0.9rem;
+    color: #666;
+}
+
+.cta-section {
+    padding: 80px 0;
+    background-color: var(--rosa-palido);
+    text-align: center;
+}
+
+.contact-section {
+    padding: 80px 0;
+    background-color: var(--blanco-calido);
+}
+
+.contact-title {
+    font-size: 2.5rem;
+    margin-bottom: 30px;
+}
+
+.contact-info {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.contact-icon {
+    font-size: 1.5rem;
+    margin-right: 15px;
+    color: var(--marron-oscuro);
+}
+
+footer {
+    background-color: var(--beige-suave);
+    color: var(--marron-oscuro);
+    padding: 50px 0 20px;
+}
+
+.footer-title {
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+}
+
+.footer-contact {
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+}
+
+.footer-contact i {
+    margin-right: 10px;
+    width: 20px;
+}
+
+.social-icons {
+    margin-top: 20px;
+}
+
+.social-icons a {
+    display: inline-block;
+    width: 40px;
+    height: 40px;
+    background-color: var(--marron-oscuro);
+    color: var(--blanco-calido);
+    border-radius: 50%;
+    text-align: center;
+    line-height: 40px;
+    margin-right: 10px;
+    transition: all 0.3s ease;
+}
+
+.social-icons a:hover {
+    background-color: var(--rosa-palido);
+    color: var(--marron-oscuro);
+    transform: translateY(-5px);
+}
+
+.copyright {
+    margin-top: 30px;
+    padding-top: 20px;
+    border-top: 1px solid rgba(73, 55, 35, 0.2);
+    text-align: center;
+}
+
+@media (max-width: 768px) {
+    .hero-title {
+        font-size: 2.5rem;
+    }
+
+    .hero-section {
+        text-align: center;
+    }
+
+    .hero-image {
+        margin-top: 30px;
+    }
+}
