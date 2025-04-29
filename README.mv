@@ -30,7 +30,7 @@ Este sistema web permite al personal del consultorio **SkinLabs** registrar, bus
 ### 1. Clonar el repositorio
 
 ```bash
-git clone https://github.com/tuusuario/nombre-del-repo.git
+git clone https://github.com/Giorgio1987/SkinLabs.git
 ```
 
 > Reemplazá `tuusuario/nombre-del-repo` con tu usuario y nombre real del repo.
@@ -144,10 +144,7 @@ Podés usarlo, modificarlo y adaptarlo libremente.
 ## ✨ Autor
 
 Desarrollado por **Giorgio**  
-📧 Contacto: [tu-email@example.com]
-
+📧 Contacto: maurito21108@gmail.com
 ```
 
 ---
-
-¿Querés que también te cree el `database.sql` de ejemplo con algunas tablas y datos de prueba para incluirlo en el repo?
