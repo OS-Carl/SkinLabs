@@ -27,9 +27,6 @@ Thumbs.db
 htdocs/
 xampp/
 
-# Archivos de Composer (si no estás usando Composer, podés sacarlo)
-vendor/
-
 # Node (por si usás npm para assets)
 node_modules/
 
@@ -37,3 +34,4 @@ node_modules/
 *.zip
 *.rar
 *.7z
+
