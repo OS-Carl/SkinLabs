@@ -1,0 +1,153 @@
+
+
+```markdown
+# 🧴 Sistema de Gestión para Consultorio SkinLabs
+
+Este sistema web permite al personal del consultorio **SkinLabs** registrar, buscar y gestionar pacientes, turnos, tratamientos y facturación médica de manera simple y rápida.
+
+## 📌 Funcionalidades principales
+
+- Agregar y modificar pacientes
+- Ver historial clínico individual y completo
+- Agendar, visualizar y eliminar turnos
+- Registrar tratamientos o anotaciones
+- Facturación y visualización de facturas
+- Sistema de login por sesión para empleados
+
+---
+
+## ⚙️ Requisitos
+
+- ✅ PHP >= 7.4
+- ✅ MySQL / MariaDB
+- ✅ XAMPP o similar (recomendado para entorno local)
+- ✅ Navegador moderno
+
+---
+
+## 🚀 Instalación con XAMPP (Windows/Linux/Mac)
+
+### 1. Clonar el repositorio
+
+```bash
+git clone https://github.com/tuusuario/nombre-del-repo.git
+```
+
+> Reemplazá `tuusuario/nombre-del-repo` con tu usuario y nombre real del repo.
+
+### 2. Copiar el proyecto a `htdocs`
+
+1. Copiá la carpeta del proyecto a:
+   ```
+   C:\xampp\htdocs\
+   ```
+   O en Linux/Mac:
+   ```
+   /opt/lampp/htdocs/
+   ```
+
+2. Por ejemplo:
+   ```
+   C:\xampp\htdocs\skinlabs\
+   ```
+
+### 3. Crear la base de datos
+
+1. Abrí **phpMyAdmin** desde `http://localhost/phpmyadmin`
+2. Importá el archivo `database.sql` que viene con el proyecto
+3. Se creará una base de datos con las tablas necesarias
+
+> Asegurate de que el nombre de la base de datos sea el correcto según lo definido en tu archivo de conexión (por ejemplo, `config.php`).
+
+### 4. Configurar conexión a la base de datos
+
+Editá el archivo de conexión a la base de datos (`config.php`, `db.php` o similar):
+
+```php
+$host = "localhost";
+$usuario = "root";
+$contrasena = "";
+$baseDeDatos = "skinlabs";
+```
+
+> ⚠️ Por defecto, XAMPP usa el usuario `root` sin contraseña.
+
+### 5. Iniciar el servidor
+
+1. Abrí **XAMPP Control Panel**
+2. Iniciá los servicios:
+   - Apache
+   - MySQL
+3. Accedé desde tu navegador a:
+   ```
+   http://localhost/skinlabs/
+   ```
+
+---
+
+## 👤 Usuarios de prueba
+
+| Usuario       | Contraseña  | Rol      |
+|---------------|-------------|----------|
+| empleado1     | admin123    | Empleado |
+
+> Podés modificar o agregar usuarios en la base de datos manualmente si es necesario.
+
+---
+
+## 📁 Estructura del proyecto
+
+```
+/skinlabs/
+│
+├── login.php               # Inicio de sesión
+├── nuevo.php               # Agregar paciente
+├── buscar.php              # Buscar/modificar paciente
+├── ver_historial.php       # Ver historial completo
+├── historia_clinica.php    # Historial de un paciente
+├── agendar_turno.php       # Agendar turno
+├── ver_agenda.php          # Ver agenda
+├── eliminar_turno.php      # Eliminar turno
+├── facturacion.php         # Cargar factura
+├── ver_facturas.php        # Ver facturación
+├── logout.php              # Cerrar sesión
+├── database.sql            # Script SQL para crear BD
+└── README.md               # Este archivo
+```
+
+---
+
+## 🌐 Tecnologías utilizadas
+
+- **PHP** (backend)
+- **MySQL** (base de datos)
+- **Bootstrap 5** (estilos y responsive)
+- **Bootstrap Icons** (íconos)
+- **HTML5/CSS3** (estructura)
+
+---
+
+## 📮 Contribuciones
+
+¿Querés colaborar o sugerir mejoras? ¡Hacelo con un Pull Request o creando un Issue!  
+Este proyecto es ideal para estudiantes, clínicas, o cualquier consultorio que quiera digitalizar su agenda médica.
+
+---
+
+## 📝 Licencia
+
+Este proyecto está bajo la licencia MIT.  
+Podés usarlo, modificarlo y adaptarlo libremente.
+
+---
+
+## ✨ Autor
+
+Desarrollado por **Giorgio**  
+📧 Contacto: [tu-email@example.com]
+
+```
+
+---
+
+¿Querés que también te cree el `database.sql` de ejemplo con algunas tablas y datos de prueba para incluirlo en el repo?

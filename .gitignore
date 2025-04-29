@@ -1,0 +1,39 @@
+# Archivos del sistema
+.DS_Store
+Thumbs.db
+
+# Archivos de log
+*.log
+*.sql
+*.sqlite
+
+# Archivos temporales y caché
+*.tmp
+*.temp
+*.bak
+*.swp
+*.swo
+
+# Archivos de entorno
+.env
+
+# Configs de IDEs
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# Archivos de XAMPP y configuraciones locales
+htdocs/
+xampp/
+
+# Archivos de Composer (si no estás usando Composer, podés sacarlo)
+vendor/
+
+# Node (por si usás npm para assets)
+node_modules/
+
+# Otros
+*.zip
+*.rar
+*.7z
