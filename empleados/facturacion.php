@@ -105,7 +105,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 <p><strong>Método de Pago:</strong> <?= htmlspecialchars($metodo_pago) ?></p>
 
                 <div class="mt-3">
-                    <button class="btn btn-secondary" onclick="window.print()">🖨️ Imprimir</button>
+                    <button class="btn btn-secondary" onclick="window.print()">🖨 Imprimir</button>
                     <button class="btn btn-success" onclick="guardarPDF()">💾 Guardar como PDF</button>
                 </div>
             </div>
