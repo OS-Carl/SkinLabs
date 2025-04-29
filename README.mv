@@ -33,7 +33,7 @@ Este sistema web permite al personal del consultorio **SkinLabs** registrar, bus
 git clone https://github.com/Giorgio1987/SkinLabs.git
 ```
 
-> Reemplazá `tuusuario/nombre-del-repo` con tu usuario y nombre real del repo.
+
 
 ### 2. Copiar el proyecto a `htdocs`
 
