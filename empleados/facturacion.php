@@ -91,7 +91,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <div class="container py-5">
     <div class="card shadow">
         <div class="card-header bg-primary text-white">
-            <h4 class="mb-0">💸 Cargar Factura</h4>
+            <h4 class="mb-0">💸 Generar Factura SkinLabs</h4>
         </div>
         <div class="card-body">
             <form method="POST">
@@ -111,7 +111,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                         <option value="Billetera Virtual">Billetera Virtual</option>
                     </select>
                 </div>
-                <button type="submit" class="btn btn-success">Guardar Factura</button>
+                <button type="submit" class="btn btn-success">Generar Factura</button>
             </form>
 
             <!-- Ticket generado -->
