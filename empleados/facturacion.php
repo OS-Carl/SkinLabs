@@ -51,36 +51,41 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
     <style>
+    .ticket {
+        width: 300px;
+        padding: 20px;
+        margin: auto;
+        background: #fff;
+        border: 1px dashed #000;
+        font-family: 'Courier New', monospace;
+        font-size: 14px;
+    }
+    .ticket hr {
+        margin: 5px 0;
+        border-top: 1px dashed #000;
+    }
+    .ticket .text-center {
+        text-align: center;
+    }
+
+    @media print {
+        body * {
+            visibility: hidden;
+        }
+        .ticket, .ticket * {
+            visibility: visible;
+        }
         .ticket {
-            width: 300px;
-            padding: 20px;
-            margin: auto;
-            background: #fff;
-            border: 1px dashed #000;
-            font-family: 'Courier New', monospace;
-            font-size: 14px;
+            position: absolute;
+            left: 0;
+            top: 0;
         }
-        .ticket hr {
-            margin: 5px 0;
-            border-top: 1px dashed #000;
+        .no-print {
+            display: none !important;
         }
-        .ticket .text-center {
-            text-align: center;
-        }
-        @media print {
-            body * {
-                visibility: hidden;
-            }
-            .ticket, .ticket * {
-                visibility: visible;
-            }
-            .ticket {
-                position: absolute;
-                left: 0;
-                top: 0;
-            }
-        }
-    </style>
+    }
+</style>
+
 </head>
 <body class="bg-light">
 <div class="container py-5">
@@ -131,8 +136,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     <em>¡Gracias por tu visita!</em>
                 </div>
                 <div class="text-center mt-3">
-                    <button class="btn btn-sm btn-secondary" onclick="window.print()">🖨 Imprimir</button>
-                    <button class="btn btn-sm btn-success" onclick="guardarPDF()">💾 PDF</button>
+                    <button class="btn btn-sm btn-secondary no-print" onclick="window.print()">🖨 Imprimir</button>
                 </div>
             </div>
             <?php endif; ?>
@@ -140,19 +144,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     </div>
 </div>
 
-<script>
-function guardarPDF() {
-    const factura = document.getElementById("factura");
-    if (factura) {
-        html2pdf().from(factura).set({
-            margin: 5,
-            filename: 'Factura_SkinLabs.pdf',
-            image: { type: 'jpeg', quality: 0.98 },
-            html2canvas: { scale: 2 },
-            jsPDF: { unit: 'mm', format: [80, 150], orientation: 'portrait' }
-        }).save();
-    }
-}
-</script>
+
 </body>
 </html>
