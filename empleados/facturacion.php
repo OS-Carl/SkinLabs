@@ -51,40 +51,57 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
     <style>
+    @page {
+        margin: 0; /* Elimina márgenes de la hoja al imprimir */
+    }
+
     .ticket {
-        width: 300px;
+        width: 100vw; /* Ocupa el ancho completo de la hoja */
+        height: 100vh; /* Ocupa el alto completo de la hoja */
         padding: 20px;
-        margin: auto;
+        margin: 0;
         background: #fff;
-        border: 1px dashed #000;
         font-family: 'Courier New', monospace;
         font-size: 14px;
+        box-sizing: border-box;
     }
+
     .ticket hr {
         margin: 5px 0;
         border-top: 1px dashed #000;
     }
+
     .ticket .text-center {
         text-align: center;
     }
 
     @media print {
+        html, body {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+        }
+
         body * {
             visibility: hidden;
         }
+
         .ticket, .ticket * {
             visibility: visible;
         }
+
         .ticket {
             position: absolute;
-            left: 0;
             top: 0;
+            left: 0;
         }
+
         .no-print {
             display: none !important;
         }
     }
 </style>
+
 
 </head>
 <body class="bg-light">
