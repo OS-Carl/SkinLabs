@@ -84,6 +84,9 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                             <tr>
                                 <th>Cliente</th>
                                 <th>DNI</th>
+                                <th>CUIL</th>
+                                <th>Dirección</th>
+                                <th>Email</th>
                                 <th>Fecha</th>
                                 <th>Monto</th>
                                 <th>Método de pago</th>
@@ -94,6 +97,9 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                             <tr>
                                 <td><?= htmlspecialchars($row['nombre']) ?></td>
                                 <td><?= htmlspecialchars($row['dni']) ?></td>
+                                <td><?= htmlspecialchars($row['cuil']) ?></td>
+                                <td><?= htmlspecialchars($row['direccion']) ?></td>
+                                <td><?= htmlspecialchars($row['mail']) ?></td>
                                 <td><?= $row['fecha'] ?></td>
                                 <td>$<?= number_format($row['monto'], 2) ?></td>
                                 <td><?= $row['metodo_pago'] ?></td>

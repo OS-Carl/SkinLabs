@@ -110,3 +110,7 @@ CREATE TABLE facturas (
 );
 
 ALTER TABLE facturas CHANGE nombre_cliente nombre VARCHAR(100);
+ALTER TABLE facturas
+ADD cuil VARCHAR(20) AFTER dni,
+ADD direccion VARCHAR(150) AFTER cuil,
+ADD mail VARCHAR(100) AFTER direccion;
