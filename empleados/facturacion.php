@@ -158,8 +158,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <?php if ($factura_guardada): ?>
                 <div id="factura" class="ticket mt-4">
                     <div class="text-center">
-                       <img src="assets/img/logo.jpg" alt="SkinLabs Logo" style="width: 80px; margin-bottom: 10px;">
-                        <h5 class="mt-2">Factura Profesional</h5>
+                    <img src="../assets/img/logo.jpg" alt="SkinLabs Logo" style="width: 80px; margin-bottom: 10px;">
+                        <h5 class="mt-2">Factura SkinLabs</h5>
                         <small>Nº: <?= rand(100000,999999) ?> - <?= date("Y") ?></small>
                         <hr>
                     </div>
