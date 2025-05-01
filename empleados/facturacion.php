@@ -162,6 +162,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                         <h5 class="mt-2">Factura SkinLabs</h5>
                         <small>Nº: <?= rand(100000,999999) ?> - <?= date("Y") ?></small>
                         <hr>
+                        <p class="mb-0"><strong>SkinLabs</strong> - Responsable Inscripto</p>
+                        <p class="mb-0">CUIT: 30-5268744-9 | Ing. Brutos: 305268742</p>
+                        <p class="mb-0">Inicio de actividades: 20/04/2019</p>
+                        <p class="mb-0">Dirección: Amenábar 629, Colegiales, CABA, Argentina</p>
+                        <p class="mb-0">Tel: 123-456-7890</p>
+                        <hr>
                     </div>
                     <p><strong>Nombre:</strong> <?= htmlspecialchars($nombre) ?></p>
                     <p><strong>DNI:</strong> <?= htmlspecialchars($dni) ?></p>
