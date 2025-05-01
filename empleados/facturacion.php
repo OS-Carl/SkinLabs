@@ -42,73 +42,97 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $conexion->close();
 }
 ?>
-
 <!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>Factura - SkinLabs</title>
+    <title>Factura Profesional - SkinLabs</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
     <style>
-    @page {
-        margin: 0; /* Elimina márgenes de la hoja al imprimir */
-    }
-
-    .ticket {
-        width: 100vw; /* Ocupa el ancho completo de la hoja */
-        height: 100vh; /* Ocupa el alto completo de la hoja */
-        padding: 20px;
-        margin: 0;
-        background: #fff;
-        font-family: 'Courier New', monospace;
-        font-size: 14px;
-        box-sizing: border-box;
-    }
-
-    .ticket hr {
-        margin: 5px 0;
-        border-top: 1px dashed #000;
-    }
-
-    .ticket .text-center {
-        text-align: center;
-    }
-
-    @media print {
-        html, body {
+        @page {
             margin: 0;
-            padding: 0;
-            height: 100%;
         }
 
-        body * {
-            visibility: hidden;
-        }
-
-        .ticket, .ticket * {
-            visibility: visible;
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f9fa;
         }
 
         .ticket {
-            position: absolute;
-            top: 0;
-            left: 0;
+            background: white;
+            padding: 30px;
+            max-width: 600px;
+            margin: 0 auto;
+            border: 1px solid #dee2e6;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
         }
 
-        .no-print {
-            display: none !important;
+        .ticket h5 {
+            margin-bottom: 0;
         }
-    }
-</style>
 
+        .ticket small {
+            color: #6c757d;
+        }
 
+        .ticket hr {
+            margin: 10px 0;
+        }
+
+        .qr {
+            text-align: center;
+            margin-top: 10px;
+        }
+
+        .firma {
+            margin-top: 30px;
+        }
+
+        .firma .linea {
+            border-top: 1px solid #000;
+            width: 200px;
+            margin: 0 auto;
+            text-align: center;
+            font-size: 12px;
+            color: #6c757d;
+        }
+
+        @media print {
+            html, body {
+                margin: 0;
+                padding: 0;
+                height: 100%;
+            }
+
+            body * {
+                visibility: hidden;
+            }
+
+            .ticket, .ticket * {
+                visibility: visible;
+            }
+
+            .ticket {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: auto;
+                box-shadow: none;
+            }
+
+            .no-print {
+                display: none !important;
+            }
+        }
+    </style>
 </head>
-<body class="bg-light">
+<body>
 <div class="container py-5">
     <div class="card shadow">
         <div class="card-header bg-primary text-white">
-            <h4 class="mb-0">💸 Generar Factura SkinLabs</h4>
+            <h4 class="mb-0">💼 Facturación Profesional - SkinLabs</h4>
         </div>
         <div class="card-body">
             <form method="POST">
@@ -131,36 +155,37 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 <button type="submit" class="btn btn-success">Generar Factura</button>
             </form>
 
-            <!-- Ticket generado -->
             <?php if ($factura_guardada): ?>
-            <div id="factura" class="ticket mt-4">
-                <div class="text-center">
-                    <h5>SKINLABS ESTÉTICA</h5>
-                    <small>Factura Nº: <?= rand(100000,999999) ?> - <?= date("Y") ?></small>
+                <div id="factura" class="ticket mt-4">
+                    <div class="text-center">
+                       <img src="assets/img/logo.jpg" alt="SkinLabs Logo" style="width: 80px; margin-bottom: 10px;">
+                        <h5 class="mt-2">Factura Profesional</h5>
+                        <small>Nº: <?= rand(100000,999999) ?> - <?= date("Y") ?></small>
+                        <hr>
+                    </div>
+                    <p><strong>Nombre:</strong> <?= htmlspecialchars($nombre) ?></p>
+                    <p><strong>DNI:</strong> <?= htmlspecialchars($dni) ?></p>
+                    <p><strong>CUIL:</strong> <?= htmlspecialchars($cuil) ?></p>
+                    <p><strong>Dirección:</strong> <?= htmlspecialchars($direccion) ?></p>
+                    <p><strong>Email:</strong> <?= htmlspecialchars($email) ?></p>
                     <hr>
+                    <p><strong>Fecha:</strong> <?= htmlspecialchars($fecha) ?></p>
+                    <p><strong>Método de Pago:</strong> <?= htmlspecialchars($metodo_pago) ?></p>
+                    <p><strong>Total:</strong> $<?= number_format($monto, 2, ',', '.') ?></p>
+                    <hr>
+                    <div class="qr">
+                        <img src="https://api.qrserver.com/v1/create-qr-code/?size=100x100&data=<?= urlencode($nombre . ' - ' . $dni . ' - ' . $fecha) ?>" alt="QR">
+                    </div>
+                    <div class="firma text-center">
+                        <div class="linea">Firma / Aclaración</div>
+                    </div>
+                    <div class="text-center mt-3">
+                        <button class="btn btn-sm btn-secondary no-print" onclick="window.print()">🖨 Imprimir</button>
+                    </div>
                 </div>
-                <p><strong>Nombre:</strong> <?= htmlspecialchars($nombre) ?></p>
-                <p><strong>DNI:</strong> <?= htmlspecialchars($dni) ?></p>
-                <p><strong>CUIL:</strong> <?= htmlspecialchars($cuil) ?></p>
-                <p><strong>Dirección:</strong> <?= htmlspecialchars($direccion) ?></p>
-                <p><strong>Email:</strong> <?= htmlspecialchars($email) ?></p>
-                <hr>
-                <p><strong>Fecha:</strong> <?= htmlspecialchars($fecha) ?></p>
-                <p><strong>Método de Pago:</strong> <?= htmlspecialchars($metodo_pago) ?></p>
-                <p><strong>Total:</strong> $<?= number_format($monto, 2, ',', '.') ?></p>
-                <hr>
-                <div class="text-center">
-                    <em>¡Gracias por tu visita!</em>
-                </div>
-                <div class="text-center mt-3">
-                    <button class="btn btn-sm btn-secondary no-print" onclick="window.print()">🖨 Imprimir</button>
-                </div>
-            </div>
             <?php endif; ?>
         </div>
     </div>
 </div>
-
-
 </body>
 </html>
