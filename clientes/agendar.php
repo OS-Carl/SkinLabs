@@ -10,41 +10,52 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $fecha = $_POST['fecha'];
     $hora = $_POST['hora'];
 
-    $query_check = "SELECT * FROM citas WHERE fecha = '$fecha' AND hora = '$hora'";
-    $result_check = mysqli_query($conexion, $query_check);
+    $fecha_actual = date('Y-m-d');
+    $hora_actual = date('H:i');
 
-    if (mysqli_num_rows($result_check) > 0) {
-        $mensaje = "<div class='alert alert-danger'>¡El horario ya está ocupado! Elegí otro.</div>";
+    if ($fecha < $fecha_actual) {
+        $mensaje = "<div class='alert alert-danger'>No se pueden agendar turnos en fechas pasadas.</div>";
+    } elseif ($fecha == $fecha_actual && $hora <= $hora_actual) {
+        $mensaje = "<div class='alert alert-danger'>No se pueden agendar turnos para una hora ya pasada de hoy.</div>";
     } else {
-        $query_check_persona = "SELECT * FROM citas WHERE fecha = '$fecha' AND dni = '$dni'";
-        $result_check_persona = mysqli_query($conexion, $query_check_persona);
+        $dia_semana = date('w', strtotime($fecha)); // 0 = domingo, 6 = sábado
 
-        if (mysqli_num_rows($result_check_persona) > 0) {
-            $mensaje = "<div class='alert alert-danger'>Esa persona ya tiene un turno ese día.</div>";
+        if ($dia_semana == 0 || $dia_semana == 6) {
+            $mensaje = "<div class='alert alert-danger'>Solo se agendan turnos de lunes a viernes.</div>";
         } else {
-            $dia_semana = date('w', strtotime($fecha));
-            if ($dia_semana == 0) {
-                $mensaje = "<div class='alert alert-danger'>No se agendan turnos los domingos.</div>";
-            } else {
-                $hora_agendada = strtotime($hora);
-                $hora_inicio = strtotime('09:00');
-                $hora_fin = strtotime('18:00');
+            $hora_agendada = strtotime($hora);
+            $hora_inicio = strtotime('09:00');
+            $hora_fin = strtotime('18:00');
 
-                if ($hora_agendada < $hora_inicio || $hora_agendada > $hora_fin) {
-                    $mensaje = "<div class='alert alert-danger'>Horario fuera de rango (09:00 - 18:00).</div>";
+            if ($hora_agendada < $hora_inicio || $hora_agendada > $hora_fin) {
+                $mensaje = "<div class='alert alert-danger'>Horario fuera de rango (09:00 - 18:00).</div>";
+            } else {
+                $query_check_persona = "SELECT * FROM citas WHERE fecha = '$fecha' AND dni = '$dni'";
+                $result_check_persona = mysqli_query($conexion, $query_check_persona);
+
+                if (mysqli_num_rows($result_check_persona) > 0) {
+                    $mensaje = "<div class='alert alert-danger'>Esa persona ya tiene un turno ese día.</div>";
                 } else {
-                    $query = "INSERT INTO citas (nombre, telefono, servicio, fecha, hora, dni) 
-                              VALUES ('$nombre', '$telefono', '$servicio', '$fecha', '$hora', '$dni')";
-                    if (mysqli_query($conexion, $query)) {
-                        $mensaje = "<div class='alert alert-success'>Turno agendado correctamente.</div>";
+                    $query_check = "SELECT * FROM citas WHERE fecha = '$fecha' AND hora = '$hora'";
+                    $result_check = mysqli_query($conexion, $query_check);
+
+                    if (mysqli_num_rows($result_check) > 0) {
+                        $mensaje = "<div class='alert alert-danger'>¡El horario ya está ocupado! Elegí otro.</div>";
                     } else {
-                        $mensaje = "<div class='alert alert-danger'>Error al guardar el turno.</div>";
+                        $query = "INSERT INTO citas (nombre, telefono, servicio, fecha, hora, dni) 
+                                  VALUES ('$nombre', '$telefono', '$servicio', '$fecha', '$hora', '$dni')";
+                        if (mysqli_query($conexion, $query)) {
+                            $mensaje = "<div class='alert alert-success'>Turno agendado correctamente.</div>";
+                        } else {
+                            $mensaje = "<div class='alert alert-danger'>Error al guardar el turno.</div>";
+                        }
                     }
                 }
             }
         }
     }
 }
+
 ?>
 
 <!DOCTYPE html>
