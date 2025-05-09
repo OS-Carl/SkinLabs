@@ -75,12 +75,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             </div>
             <div class="mb-3">
                 <label for="hora" class="form-label">Hora</label>
-                <input type="time" class="form-control" id="hora" name="hora" required>
+                <input type="time" class="form-control" id="hora" name="hora" required max="20:00"> 
             </div>
             <button type="submit" class="btn btn-success">Agendar cita</button>
         </form>
     </div>
 </body>
 </html>
-
-
